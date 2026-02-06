@@ -1,0 +1,1195 @@
+/* ---------- RESET & BASE ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  overflow-x: visible;
+}
+
+body {
+  font-family: "Inter", Arial, sans-serif;
+  background: #000;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  display: grid;
+
+}
+
+
+
+header,
+main,
+section,
+.hero {
+  width: 100%;
+  max-width: 70vw;
+}
+
+.social-bar {
+  position: fixed;
+  left: 0;
+}
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+}
+
+
+/* ---------- HEADER ---------- */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(5, 8, 12, 0.6);
+  backdrop-filter: blur(6px);
+  z-index: 1200;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* navbar */
+.navbar {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 100px;
+}
+
+/* links - underline animado de dentro pra fora */
+.nav-links {
+  display: flex;
+  gap: 22px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: #e9eef7;
+  text-decoration: none;
+  font-weight: 700;
+  position: relative;
+  padding: 6px 0;
+}
+
+/* linha que surge do centro (scaleX) */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 3px;
+  background: linear-gradient(90deg, #ffffff, #ffffff);
+  transform-origin: center;
+  transform: scaleX(0);
+  transition: transform .32s cubic-bezier(.2, .9, .2, 1);
+  border-radius: 3px;
+}
+
+.nav-links a:hover::after,
+.nav-links a:focus::after {
+  transform: scaleX(1);
+}
+
+/* hamburguer button */
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* ---------- SIDEBAR REDES ---------- */
+.social-bar {
+  position: fixed;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 1100;
+}
+
+.social-bar a {
+  display: block;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-bar img {
+  width: 20px;
+  height: 20px;
+  filter: invert(1);
+  transition: transform .22s ease, filter .22s ease;
+}
+
+.social-bar a:hover img {
+  transform: translateX(6px) scale(1.08);
+  filter: drop-shadow(rgb(255, 255, 255));
+}
+
+/* ---------- HERO (VIDEO + CARROSSEL) ---------- */
+.hero {
+  position: relative;
+  height: 92vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 80px;
+}
+
+.bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: brightness(.45);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+  padding: 30px 16px;
+}
+
+/* carrossel */
+.carousel {
+  position: relative;
+  width: 100%;
+  margin: 0 auto 20px;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(2, 6, 12, .6);
+}
+
+.slides {
+  display: flex;
+  transition: transform .6s cubic-bezier(.22, .9, .2, 1);
+  width: 100%;
+}
+
+.slides img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  flex-shrink: 0;
+  display: block;
+}
+
+/* botões setas */
+.carousel-prev,
+.carousel-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(7, 10, 14, 0.6);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  font-size: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-prev {
+  left: 14px;
+}
+
+.carousel-next {
+  right: 14px;
+}
+
+/* paginação numerada (estilo MIBR) */
+.carousel-pagination {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 6;
+}
+
+.carousel-pagination button {
+  border: none;
+  background: rgba(12, 15, 20, 0.6);
+  color: #cfe9ff;
+  padding: 8px 10px;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+.carousel-pagination button.active {
+  background: linear-gradient(90deg, #000000, #413131);
+  color: #fff;
+  opacity: 1;
+}
+
+/* titulo e botao logo abaixo */
+.hero h1 {
+  font-size: 36px;
+  margin-top: 12px;
+  letter-spacing: 0.2px;
+}
+
+.hero p {
+  color: #d6e6ff;
+  margin: 8px 0 18px;
+  opacity: 0.85;
+}
+
+.btn {
+  display: inline-block;
+  background: #2d8cff;
+  padding: 10px 18px;
+  border-radius: 10px;
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* ---------- LINE-UPS (CARD IMAGEM + OVERLAY) ---------- */
+.lineups {
+  padding: 60px 24px;
+  text-align: center;
+  margin-top: 80px;
+
+}
+
+.lineups h2 {
+  margin-bottom: 24px;
+  font-size: 28px;
+}
+
+.games-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+/* cada card usa background-image inline (no HTML) */
+.game-card {
+  position: relative;
+  height: 220px;
+  display: block;
+  border-radius: 12px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  text-decoration: none;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(2, 6, 12, 0.6);
+  transition: transform .28s ease;
+}
+
+.game-card::before {
+  /* gradiente escuro pra legibilidade */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(3, 6, 12, 0.15) 0%, rgba(3, 6, 12, 0.75) 100%);
+}
+
+.game-card .game-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.game-icon {
+  width: 84px;
+  height: 84px;
+  opacity: 0.95;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.6));
+}
+
+.game-title {
+  position: absolute;
+  left: 18px;
+  bottom: 12px;
+  z-index: 3;
+  font-weight: 800;
+  font-size: 16px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.game-title .arrow {
+  opacity: .9;
+  margin-left: 8px;
+  font-size: 18px;
+}
+
+/* hover */
+.game-card:hover {
+  transform: translateY(-8px) scale(1.01);
+}
+
+/* ---------- NOTÍCIAS (GRID ESTILO "GLOBO") ---------- */
+.noticias {
+  padding: 60px 24px;
+}
+
+.noticias h2 {
+  text-align: center;
+  margin-bottom: 26px;
+  font-size: 28px;
+}
+
+/* grid com áreas: top -> n1 n2 n3 ; bottom -> n4 n4 n6 (n4 e n5 stacked) */
+.noticias-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 1fr 1fr 1.5fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas: "n1 n2 n3" "n4 n4 n6" "n5 n5 n6";
+}
+
+/* cada carta */
+.noticia-card {
+  background: #09101a;
+  border-radius: 12px;
+  padding: 12px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 150px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+.noticia-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.noticia-card h3 {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+/* areas atribuídas por classe */
+.noticias-grid .n1 {
+  grid-area: n1;
+}
+
+.noticias-grid .n2 {
+  grid-area: n2;
+}
+
+.noticias-grid .n3 {
+  grid-area: n3;
+}
+
+.noticias-grid .n4 {
+  grid-area: n4;
+  min-height: 220px;
+}
+
+.noticias-grid .n5 {
+  grid-area: n5;
+  min-height: 220px;
+}
+
+.noticias-grid .n6 {
+  grid-area: n6;
+  min-height: auto;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  padding: 28px 16px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  color: #9fb3d9;
+}
+
+/* ---------- RESPONSIVIDADE ---------- */
+@media (max-width: 1100px) {
+  .slides img {
+    height: 420px;
+  }
+
+  .noticias-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "n1 n2" "n3 n6" "n4 n5";
+  }
+
+  .noticias-grid .n6 {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 700px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 64px;
+    right: 14px;
+    background: rgba(5, 8, 12, 0.95);
+    padding: 12px;
+    border-radius: 8px;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .slides img {
+    height: 260px;
+  }
+
+  .hero h1 {
+    font-size: 22px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .games-grid {
+    gap: 12px;
+    grid-template-columns: 1fr;
+  }
+
+  .noticias-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: "n1" "n2" "n3" "n4" "n5" "n6";
+  }
+
+  .noticias-grid .n6 {
+    min-height: 220px;
+  }
+
+  .social-bar {
+    left: 6px;
+  }
+}
+
+/* ---------- LINE-UP SECTION ---------- */
+.lineup-section {
+  margin-top: 160px;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.titulo-lineup {
+  font-size: 2.6rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.subtitulo {
+  font-size: 1.3rem;
+  color: #ccc;
+  margin-bottom: 32px;
+}
+
+/* ===============================
+   LINE-UP — MOBILE SCROLL REAL
+================================ */
+
+.lineup-container {
+  width: 100%;
+  display: flex;
+  gap: 24px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+
+  touch-action: pan-x;
+
+  padding: 20px;
+}
+
+.player-card {
+  flex: 0 0 auto;
+  min-width: 240px;
+
+  scroll-snap-align: center;
+}
+
+
+
+.player-card:hover {
+  transform: scale(1.04);
+}
+
+.player-card img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+}
+
+.player-name {
+  font-weight: 800;
+  font-size: 1.3rem;
+  margin: 12px 0 20px;
+}
+
+/* HERO ESTILO NOTÍCIA */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at right, #111 0%, #050505 60%);
+}
+
+.hero-news {
+  position: relative;
+  z-index: 2;
+
+  max-width: 1200px;
+  margin: 0 auto;
+
+  padding: 140px 40px 80px;
+
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 40px;
+}
+
+/* compensação visual por causa da sidebar */
+@media (min-width: 1024px) {
+  .hero-news {
+    transform: translateX(32px);
+  }
+}
+
+.hero-text h1 {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+.hero-text h1 span {
+  color: #5b5fff;
+}
+
+.hero-text p {
+  margin: 24px 0;
+  max-width: 420px;
+  color: #b3b3b3;
+  font-size: 1rem;
+}
+
+.hero .btn {
+  display: inline-block;
+  padding: 14px 32px;
+  background: #5b5fff;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.hero-image img {
+  max-width: 30%;
+  filter: drop-shadow(0 0 40px rgba(91, 95, 255, 0.25));
+}
+
+
+/* escurece o vídeo pra parecer banner */
+.bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.35);
+  z-index: 0;
+}
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+  .hero-news {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-image {
+    margin-top: 40px;
+  }
+
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+}
+
+.page {
+  min-height: 100vh;
+  padding: 160px 40px 80px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.page-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.page h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.muted {
+  color: #b3b3b3;
+  max-width: 600px;
+}
+
+.announcement p {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.discord-logo {
+  width: 120px;
+  margin-bottom: 30px;
+  filter: drop-shadow(0 0 20px rgba(91, 95, 255, 0.4));
+}
+
+
+
+/* Mobile */
+@media (max-width: 768px) {
+  .lineup-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    scroll-snap-type: x mandatory;
+    padding-left: 20px;
+  }
+
+  .player-card {
+    min-width: 220px;
+    scroll-snap-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .social-bar {
+    display: none;
+  }
+}
+
+
+/* Fontes */
+
+/* Primeiro, registra a fonte no navegador */
+@font-face {
+  font-family: 'MinhaFonteSite';
+  src: url('fonts/new_york_scary/New\ York\ Scary.ttf') format('truetype');
+}
+
+/* Segundo, cria uma classe para usar onde quiser */
+.fonte-diferenciada {
+  font-family: 'MinhaFonteSite', sans-serif;
+  font-size: 24px;
+  /* Opcional: ajuste o tamanho */
+}
+
+@font-face {
+  font-family: 'Nightask';
+  src: url('fonts/n_nightask/nNightask.ttf') format('truetype');
+}
+
+/* Segundo, cria uma classe para usar onde quiser */
+.fonte-diferenciada2 {
+  font-family: 'Nightask';
+  font-size: 24px;
+  /* Opcional: ajuste o tamanho */
+}
+
+@font-face {
+  font-family: 'bartone';
+  src: url('fonts/bartone/Bartone.otf') format('truetype');
+}
+
+/* Segundo, cria uma classe para usar onde quiser */
+.fonte-diferenciada3 {
+  font-family: 'Bartone';
+  font-size: 24px;
+  /* Opcional: ajuste o tamanho */
+}
+
+@font-face {
+  font-family: 'bitter_sugar';
+  src: url('fonts/bitter_sugar/gomarice_bitter_and_sugar.ttf') format('truetype');
+}
+
+/* Segundo, cria uma classe para usar onde quiser */
+.fonte-diferenciada4 {
+  font-family: 'Bitter';
+  font-size: 24px;
+  /* Opcional: ajuste o tamanho */
+}
+
+/* ===== DISCORD MAIN ===== */
+
+.discord-main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 160px 20px 80px;
+}
+
+.discord-hero {
+  max-width: 900px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+}
+
+.discord-icon {
+  width: 110px;
+  filter: drop-shadow(0 0 24px rgba(88, 101, 242, 0.6));
+}
+
+.discord-title {
+  font-size: 3.2rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.discord-title span {
+  color: #5865f2;
+}
+
+.discord-text {
+  max-width: 620px;
+  color: #c9d1ff;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.discord-btn {
+  margin-top: 10px;
+  background: linear-gradient(135deg, #5865f2, #404eed);
+  color: #fff;
+  padding: 14px 36px;
+  border-radius: 999px;
+  font-weight: 800;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: transform .2s ease, box-shadow .2s ease;
+  box-shadow: 0 10px 30px rgba(88, 101, 242, 0.35);
+}
+
+.discord-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(88, 101, 242, 0.55);
+}
+
+/* COPA */
+
+/* ===== COPA IPL ===== */
+
+.ipl-main {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 160px 20px 80px;
+}
+
+.ipl-hero {
+  max-width: 850px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+
+.ipl-title {
+  font-size: 3.4rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.ipl-title span {
+  color: #5865f2;
+}
+
+.ipl-subtitle {
+  max-width: 640px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #cfd6ff;
+  opacity: 0.9;
+}
+
+.ipl-features {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  margin: 20px 0 10px;
+  grid-template-columns: repeat(2, minmax(140px, 1fr));
+  gap: 14px 26px;
+  font-size: 0.95rem;
+  color: #ffffff;
+  align-self: flex-start;
+}
+
+.ipl-features li {
+  opacity: 0.9;
+}
+
+.ipl-btn {
+  margin-top: 10px;
+  background: linear-gradient(135deg, #5865f2, #404eed);
+  color: #fff;
+  padding: 14px 38px;
+  border-radius: 999px;
+  font-weight: 800;
+  text-decoration: none;
+  font-size: 1rem;
+  box-shadow: 0 10px 30px rgba(88, 101, 242, 0.4);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.ipl-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 45px rgba(88, 101, 242, 0.6);
+}
+
+.ipl-signature img {
+  margin-top: 40px;
+  width: 180px;
+  opacity: 0.85;
+}
+
+/* ================================
+   CORREÇÕES FINAIS — D.GODS
+   não quebra nada
+================================ */
+
+/* evita scroll lateral */
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* remove empurrão lateral invisível */
+body {
+  display: grid;
+}
+
+/* remove bug de 100vw */
+header,
+main,
+section,
+.hero {
+  max-width: 100%;
+}
+
+/* ================================
+   HERO / HOME
+================================ */
+
+.hero {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* parágrafo centralizado corretamente */
+.hero-text p {
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* remove empurrão da sidebar */
+@media (min-width: 1024px) {
+  .hero-news {
+    transform: none;
+  }
+}
+
+/* ================================
+   NOTÍCIAS
+================================ */
+
+.noticia-card {
+  overflow: hidden;
+}
+
+/* imagem cobre corretamente */
+.noticia-card img {
+  width: 100%;
+  height: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* cards grandes */
+.noticias-grid .n4 img,
+.noticias-grid .n5 img,
+.noticias-grid .n6 img {
+  max-height: 280px;
+}
+
+/* ================================
+   SIDEBAR
+================================ */
+
+.social-bar {
+  max-width: 40px;
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 900px) {
+
+  .hero-news {
+    padding: 120px 20px 60px;
+    text-align: center;
+  }
+
+  .hero-image img {
+    max-width: 60%;
+    margin: 0 auto;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .hero-text h1 {
+    font-size: 2.3rem;
+  }
+
+  .discord-title,
+  .ipl-title {
+    font-size: 2.4rem;
+  }
+
+  .discord-text,
+  .ipl-subtitle {
+    font-size: 0.95rem;
+  }
+
+}
+
+/* ===============================
+   LINE-UP — FIX DEFINITIVO
+================================ */
+
+.lineup-container {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  padding: 10px 20px 30px;
+}
+
+.player-card {
+  flex: 0 0 auto;
+  /* 🔥 ESSENCIAL */
+  min-width: 240px;
+
+  scroll-snap-align: center;
+}
+
+/* desktop centralizado */
+@media (min-width: 900px) {
+  .lineup-container {
+    justify-content: center;
+  }
+}
+
+/* ===== TESTE DEFINITIVO DE SCROLL ===== */
+
+.lineup-container {
+  overflow-x: scroll !important;
+  overflow-y: hidden !important;
+
+  display: flex !important;
+  flex-wrap: nowrap !important;
+
+  gap: 20px;
+
+  width: 100%;
+  max-width: 100vw;
+
+  touch-action: pan-x !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+.player-card {
+  min-width: 260px !important;
+  flex: 0 0 auto !important;
+}
+
+/* ===== ESCONDER SCROLLBAR (SEM QUEBRAR SCROLL) ===== */
+
+.lineup-container {
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.lineup-container::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Edge, Safari */
+}
+
+/* redes no nav — desktop */
+.nav-social-mobile {
+  display: none;
+}
+
+/* mobile */
+@media (max-width: 768px) {
+
+  /* redes só aparecem quando o menu está aberto */
+  .nav-links.active .nav-social-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .nav-social-mobile a {
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.85;
+    text-decoration: none;
+  }
+
+  .nav-social-mobile a:hover {
+    opacity: 1;
+  }
+}
+
+/* redes mobile - base */
+.nav-social-mobile {
+  display: none;
+}
+
+/* botão "Siga" */
+.social-toggle {
+  background: none;
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+}
+
+/* links fechados por padrão */
+.social-links {
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+  padding-left: 8px;
+}
+
+/* mobile */
+@media (max-width: 768px) {
+
+  .nav-links.active .nav-social-mobile {
+    display: block;
+  }
+
+  .nav-social-mobile.open .social-links {
+    display: flex;
+  }
+
+  .social-links a {
+    opacity: 0.85;
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+
+  .social-links a:hover {
+    opacity: 1;
+  }
+
+}
+
+
